@@ -41,7 +41,7 @@ body {
     /* as a percentage of the viewport height (vh) */
     height: 100vh;
     min-height: 740px;
-    background-image: url("imgs/water2.jpg");
+    background-image: url("imgs/water.jpg");
     background-position: left;
     background-repeat: no-repeat;
     background-size: cover;
