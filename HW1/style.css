@@ -1,7 +1,7 @@
 body {
     padding: 0;
     margin: 0;
-    background-image: url("imgs/water.jpg");
+    background-image: url("imgs/background.png");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -41,7 +41,7 @@ body {
     /* as a percentage of the viewport height (vh) */
     height: 100vh;
     min-height: 740px;
-    background-image: url("imgs/water.jpg");
+    background-image: url("imgs/cat.jpg");
     background-position: left;
     background-repeat: no-repeat;
     background-size: cover;
