@@ -1,0 +1,1 @@
+The biggest problem I had with this assignment was simply getting javascript to link with my html document. This was easily fixed with a google search as then I figured out is was a simple syntax issue. Otherwise, thanks to the simplicy of the "Hello World" program, I was easily able to get my site up and running with the necessary log entries.
