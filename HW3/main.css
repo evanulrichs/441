@@ -1,5 +1,13 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: beige;
+    background-color: rgb(151, 231, 198);
     align-content: center;
+}
+
+img {
+    max-height: 300px;
+}
+
+div {
+    max-width: 600px;
 }
