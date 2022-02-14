@@ -6,17 +6,39 @@
     <script src="main.js"></script>
 </head>
 
-<body>
-    <img src="images/Jimothy.png" id="image">
-    <div id="story">
-        This is Jimothy the mouse. He is going grocery shopping but forgot his list! Guess he'll have to impovise.
-        Jimothy has a budget of 20$ (he is a college student). Should he go to the bakery first? 
-        Or maybe the produce section? Theres also dairy and a small sweets section too. Where to go first?
-    </div>
-    <div id="budget">Current Funds: 20$</div>
+<style>
+    body {
+        background-color:darkcyan
+    }
+    #image {
+        display: block;
+        margin: auto;
+        max-height: 300px;
+    }
+    #content {
+        max-width: 500px;
+        margin: auto;
+    }
+</style>
 
-    <input type="text" size="30" id="choice" value="Type in 'Bakery', 'Produce', 'Dairy', or 'Sweets'">
-    <button id="btnSubmit" onclick="getChoice();">Submit</button>
+<body>
+    <div id="content">
+        <img src="images/Jimothy.png" id="image">
+        <br>
+        <div id="story">
+            This is Jimothy the mouse. He is going grocery shopping but forgot his list! Guess he'll have to impovise.
+            Jimothy has a budget of 20$ (he is a college student). Should he go to the bakery first? 
+            Or maybe the produce section? Theres also dairy and a small sweets section too. Where to go first?
+        </div>
+        <br>
+        <div id="budget">Current Funds: 20$</div>
+        <br>
+        <div id="cart"></div>
+        <br>
+
+        <input type="text" size="40" id="choice" value="Type in 'Bakery', 'Produce', 'Dairy', or 'Sweets'.">
+        <button id="btnSubmit" onclick="getChoice();">Submit</button>
+    </div>
 </body>
 
 </html>
