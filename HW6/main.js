@@ -1,12 +1,13 @@
 var imageTags = ["image1", "image2", "image3", "image4", "image5", "image6", "image7", "image8", "image9", "image10"];
 var cardBackPath = "images/card back.jpg";
-var actualImages = new Array();
 var player = {"firstname":"", "lastname":"", "age":0, "score":0};
 
 var firstNumber = -1;
 var secondNumber = -1;
 var score = 0;
 var allFound = 0;
+
+var actualImages = new Array();
     
 function printBlanks() {
 
@@ -63,18 +64,19 @@ function flipImage(number) {
         secondNumber = -1;
 
         if(allFound == actualImages.length/2) { 
+            var playerInformation = localStorage.getItem("playerInfo");
+            player = JSON.parse(playerInformation);
 
-            player.firstname = player.firstname;
             player.score = score;
             localStorage.setItem("playerInfo", JSON.stringify(player));
+            
             window.location = "end.html";
         }
     }
-
 }
 
-function addPlayer() {
-
+function addPlayer()
+{
     player.firstname = document.getElementById("txtFirstName").value;
     player.lastname = document.getElementById("txtLastName").value;
     player.age = document.getElementById("txtAge").value;
@@ -95,12 +97,15 @@ function flipToCardBack() {
 function playerInfo() {
 
     var playerInformation = localStorage.getItem("playerInfo");
-
+    
     player = JSON.parse(playerInformation);
 
     var str = "Name: " + player.firstname + " " + player.lastname + "<br>" +
     "Age: " + player.age + "<br>" +
     "Score: " + player.score;
 
+    if(document.getElementById("endInformation") != null) {
+
         document.getElementById("endInformation").innerHTML = str;
+    }
 }
