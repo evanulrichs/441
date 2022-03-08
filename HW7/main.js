@@ -31,9 +31,9 @@ function accessInformation() {
     var photo = myPhotos[randomNumber];
 
     document.getElementById("image").src = photo.image;
-    document.getElementById("title").innerHTML = photo.title;
-    document.getElementById("description").innerHTML = photo.description;
-    document.getElementById("author").innerHTML = photo.author;
-    document.getElementById("year").innerHTML = photo.year;
+    document.getElementById("title").innerHTML = "Title: " + photo.title;
+    document.getElementById("description").innerHTML = "Description: " + photo.description;
+    document.getElementById("author").innerHTML = "Author: " + photo.author;
+    document.getElementById("year").innerHTML = "Year: " + photo.year;
     
 }
