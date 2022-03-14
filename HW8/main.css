@@ -1,0 +1,57 @@
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+.fruit {
+    max-height: 100px;
+}
+
+#fruits {
+    margin: auto;
+    max-width: 700px;
+}
+
+#image {
+    margin: auto;
+    max-width: 700px;
+}
+
+#eye {
+    max-height: 200px;
+    position: relative;
+}
+
+#words {
+    margin: auto;
+    max-width: 700px;
+}
+
+#red {
+    background: rgb(194, 9, 9);
+    color: white;
+}
+
+#orange {
+    background: rgb(214, 133, 11);
+    color: white;
+}
+
+#yellow {
+    background: rgb(218, 221, 14);
+    color: white;
+}
+
+#green {
+    background: rgb(9, 194, 55);
+    color: white;
+}
+
+#blue {
+    background: rgb(16, 29, 212);
+    color: white;
+}
+
+#purple {
+    background: rgb(194, 9, 169);
+    color: white;
+}
