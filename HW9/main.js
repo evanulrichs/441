@@ -28,7 +28,7 @@ function pokedexUpdate(pokeID) {
         $.each(pokeData, function(i, pokeArray) {
             $("#numberAndName").text(pokeArray[pokeID].num + " " + pokeArray[pokeID].name);
             $("#img").attr("src", pokeArray[pokeID].img);
-            $("body").typeBackgroud(pokeArray[pokeID].type);
+            $("body").typeBackgroud(pokeArray[pokeID].type); //plugin
         });
     });
 }
