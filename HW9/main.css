@@ -1,0 +1,15 @@
+body {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+#pokeDiv {
+    margin: auto;
+    max-width: 300px;
+    transform: translate(0%, 50%);
+    border-style: solid;
+    border-color: white;
+    border-radius: 5%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
