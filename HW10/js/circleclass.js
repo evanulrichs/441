@@ -12,7 +12,7 @@ class Circle {
     setY(y) {
         this.y = y;
     }
-    setHeight(r) {
+    setRadius(r) {
         this.r = r;
     }
     setColor(color) {
