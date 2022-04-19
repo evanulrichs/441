@@ -22,6 +22,7 @@ var platforms;
 var player;
 var stars;
 var bombs;
+var spikes;
 var cursors;
 var score = 0;
 var scoreText;
@@ -34,6 +35,7 @@ function preload() {
     this.load.image('ground', 'assets/platform.png');
     this.load.image('star', 'assets/star.png');
     this.load.image('bomb', 'assets/bomb.png');
+    this.load.image('spike', 'assets/spikes.png');
     this.load.spritesheet('pacman', 'assets/pacman.png', {
         frameWidth: 28,
         frameHeight: 28
@@ -46,8 +48,19 @@ function create() {
     platforms = this.physics.add.staticGroup();
 
     platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+    platforms.create(100, 200, 'ground');
+    platforms.create(100, 400, 'ground');
+    platforms.create(700, 100, 'ground');
+    platforms.create(700, 300, 'ground');
 
-    platforms.create(40, 400, 'ground');
+
+    spikes = this.physics.add.staticGroup();
+
+    spikes.create(150, 376, 'spike');
+    spikes.create(150, 176, 'spike');
+    spikes.create(650, 276, 'spike');
+    spikes.create(650, 76, 'spike');
+
 
     player = this.physics.add.sprite(28, 308, 'pacman');
 
@@ -96,7 +109,11 @@ function create() {
     });
 
     stars.children.iterate(function(child) {
-        child.setBounceY(Phaser.Math.FloatBetween(0.2, 0.3));
+        child.setBounce(Phaser.Math.FloatBetween(0.5, 1));
+        child.setCollideWorldBounds(true);
+        child.setVelocity(Phaser.Math.Between(-200, 200), 20);
+        child.allowGravity = false;
+
     });
 
     bombs = this.physics.add.group();
@@ -111,7 +128,7 @@ function create() {
     this.physics.add.collider(bombs, platforms);
 
     this.physics.add.overlap(player, stars, collectStar, null, this);
-
+    this.physics.add.overlap(player, spikes, hitSpike, null, this);
     this.physics.add.collider(player, bombs, hitBomb, null, this);
 
 }
@@ -165,6 +182,16 @@ function collectStar(player, star) {
 }
 
 function hitBomb(player, bomb) {
+    this.physics.pause();
+
+    player.setTint(0xff0000);
+
+    player.anims.play('stationary');
+
+    gameOver = true;
+}
+
+function hitSpike(player, spike) {
     this.physics.pause();
 
     player.setTint(0xff0000);
