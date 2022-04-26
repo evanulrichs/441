@@ -1,12 +1,14 @@
 var scene = new THREE.Scene()
 var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, .1, 1000)
 var renderer = new THREE.WebGLRenderer()
+var cubeA, cubeB;
+var object;
 
 camera.position.x = 10
-camera.position.y = 00
+camera.position.y = 120
 camera.position.z = 90
 
-renderer.setClearColor(0xdd000d)
+renderer.setClearColor(0x000000)
 renderer.setSize(window.innerWidth, window.innerHeight)
 
 camera.lookAt(scene.position)
@@ -21,62 +23,66 @@ var render = function() {
     spinCamera()
     renderer.render(scene, camera);
 };
-loadFont()
-render();
 
-//SETTINGS
-var text = "aems",
-    height = 2,
-    size = 10,
-    curveSegments = 10,
-    bevelThickness = 1,
-    bevelSize = 0.3,
-    bevelSegments = 3,
-    bevelEnabled = true,
-    font = undefined
-
+createCubeA()
+createCubeB()
+loadModel()
+render()
 
 var rotation = 0
 
 function spinCamera() {
-    rotation -= 0.05
-    camera.position.z = Math.sin(rotation) * 80;
-    camera.position.x = Math.cos(rotation) * 80;
+    rotation += 0.01
+    camera.position.x = Math.sin(rotation) * 80;
+    camera.position.z = Math.cos(rotation) * 80;
     camera.lookAt(scene.position)
 }
 
-function loadFont() {
-    var loader = new THREE.FontLoader();
-
-    loader.load('fonts/helvetiker_regular.typeface.json', function(res) {
-        font = res;
-        createText();
+function createCubeA() {
+    var geometry = new THREE.BoxGeometry();
+    var material = new THREE.MeshBasicMaterial({
+        color: 0xFFA500
     });
+    cubeA = new THREE.Mesh(geometry, material);
+    cubeA.position.set(0, 0, 40);
+    scene.add(cubeA);
+    cubeA.scale.x = 15; // SCALE
+    cubeA.scale.y = 15; // SCALE
+    cubeA.scale.z = 15; // SCALE
+    animateA();
 }
 
-function createText() {
-    // change the text here
-    textGeo = new THREE.TextGeometry('Ew', {
-        font: font,
-        size: size,
-        height: height,
-        curveSegments: curveSegments,
-        weight: "normal",
-        bevelThickness: bevelThickness,
-        bevelSize: bevelSize,
-        bevelSegments: bevelSegments,
-        bevelEnabled: bevelEnabled
-    });
-    textGeo.computeBoundingBox();
-    textGeo.computeVertexNormals();
+function animateA() {
+    requestAnimationFrame(animateA);
+    cubeA.rotation.x += 0.01;
+    cubeA.rotation.y -= 0.01;
+}
 
-    // change the color here
-    var color = new THREE.Color(0xffdd00);
-    var textMaterial = new THREE.MeshBasicMaterial({
-        color: color
+function createCubeB() {
+    var geometry = new THREE.BoxGeometry();
+    var material = new THREE.MeshBasicMaterial({
+        color: 0xFFA500
     });
-    var text = new THREE.Mesh(textGeo, textMaterial)
-    text.position.x = -textGeo.boundingBox.max.x / 2;
-    text.castShadow = true;
-    scene.add(text)
+    cubeB = new THREE.Mesh(geometry, material);
+    cubeB.position.set(0, 0, -40);
+    scene.add(cubeB);
+    cubeB.scale.x = 15; // SCALE
+    cubeB.scale.y = 15; // SCALE
+    cubeB.scale.z = 15; // SCALE
+    animateB();
+}
+
+function animateB() {
+    requestAnimationFrame(animateB);
+    cubeB.rotation.x -= 0.01;
+    cubeB.rotation.y += 0.01;
+}
+
+function loadModel() {
+    var loader = new THREE.STLLoader();
+    loader.load('models/Gilgamesh.stl', function(geometry) {
+        object = new THREE.Mesh(geometry);
+        object.rotation.x = Math.PI / -2;
+        scene.add(object);
+    });
 }
