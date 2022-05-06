@@ -2,7 +2,7 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 const parse = require('node-html-parser').parse;
-var fullName = "";
+var info = "";
 
 // Create a server
 http.createServer(function(request, response) {
@@ -49,19 +49,19 @@ function readQueryString(queryObject) {
 
     // access all the queryString variables
     if (queryObject != null) {
-        let fName = queryObject.firstName;
-        let lName = queryObject.lastName;
-        if (fName != undefined && lName != undefined) {
-            fullName = fName + " " + lName;
-            // change the file
-            updateFile(fullName);
-        }
+        let fColor = queryObject.favColor;
+        let fNumber = queryObject.favNumber;
 
+        if (fColor != undefined && fNumber != undefined) {
+            //info = fColor + " " + fNumber;
+            // change the file
+            updateFile(fColor, fNumber);
+        }
     }
 }
 
 // this function updates the html file
-function updateFile(fullName) {
+function updateFile(fColor, fNumber) {
     // open the html file
     fs.readFile('index2.html', 'utf8', (err, html) => {
         if (err) {
@@ -71,10 +71,12 @@ function updateFile(fullName) {
         // read through the DOM to change it
         let root = parse(html);
         // find the span tag in the file
-        let mySpan = root.querySelector('span');
+        let myh1 = root.querySelector('h1');
+        let myStyle = root.querySelector('style');
 
         // change the content of 
-        mySpan.set_content(fullName);
+        myh1.set_content(fNumber);
+        myStyle.set_content('h1 {color: ' + fColor + ';}');
 
         // create the stream
         var writerStream = fs.createWriteStream("index2.html");
@@ -91,5 +93,4 @@ function updateFile(fullName) {
             console.log(err.stack);
         });
     });
-
 }

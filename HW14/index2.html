@@ -2,19 +2,15 @@
 
 <head>
     <title>Node.js</title>
-    <style>
-        body {
-            background-color: burlywood;
-        }
-    </style>
+    <style>h1 {color: orange;}</style>
     <script>
         function refreshPage() {
             const params = new URLSearchParams(window.location.search)
-            var fName = params.get("firstName");
-            var lName = params.get("lastName");
+            var fColor = params.get("favColor");
+            var fNumber = params.get("favNumber");
             var refresh = params.has("norefresh");
             if (!refresh) {
-                window.location = "index2.html?firstName=" + fName + "&lastName=" + lName + "&norefresh=1";
+                window.location = "index2.html?favColor=" + fColor + "&favNumber=" + fNumber + "&norefresh=1";
             }
 
         }
@@ -22,11 +18,8 @@
 </head>
 
 <body onload="refreshPage();">
-    <h1>
-        Welcome!
-    </h1>
-    <span>Grant Williams</span>
 
+    <h1>8989898</h1>
 
 </body>
 
